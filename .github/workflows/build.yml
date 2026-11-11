@@ -13,7 +13,6 @@ jobs:
     steps:
       - name: Free runner disk space
         run: |
-          df -h
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /usr/local/lib/android
           sudo rm -rf /opt/ghc
@@ -55,5 +54,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: MACID_x86-ISO
-          path: kali-live/images/*.iso
+          path: kali-live/output/*.iso
           if-no-files-found: error
