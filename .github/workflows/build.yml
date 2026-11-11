@@ -14,10 +14,18 @@ jobs:
       - name: Checkout MACID_x86
         uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Install build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y git live-build cdebootstrap curl
+          sudo apt-get install -y git live-build cdebootstrap curl wget
+
+      - name: Install Kali live-build and archive keyring
+        run: |
+          wget -O /tmp/kali-keyring.deb https://http.kali.org/pool/main/k/kali-archive-keyring/kali-archive-keyring_2025.3_all.deb
+          wget -O /tmp/live-build.deb https://http.kali.org/pool/main/l/live-build/live-build_20250814+kali3_all.deb
+          sudo dpkg -i /tmp/kali-keyring.deb
+          sudo dpkg -i /tmp/live-build.deb
+          dpkg-query -W live-build
 
       - name: Clone Kali Live
         run: |
