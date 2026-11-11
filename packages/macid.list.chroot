@@ -1,0 +1,17 @@
+kali-linux-core
+kali-desktop-xfce
+xfce4-terminal
+zsh
+nmap
+wireshark
+python3
+python3-pip
+git
+gcc
+make
+htop
+curl
+wget
+tmux
+busybox
+network-manager
