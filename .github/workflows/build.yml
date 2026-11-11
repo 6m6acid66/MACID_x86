@@ -1,0 +1,41 @@
+name: Build MACID_x86 ISO
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout MACID_x86
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git live-build cdebootstrap curl
+
+      - name: Clone Kali Live
+        run: |
+          git clone --depth 1 https://gitlab.com/kalilinux/build-scripts/kali-live.git
+
+      - name: Add MACID package list
+        run: |
+          mkdir -p kali-live/kali-config/variant-xfce/package-lists
+          cp packages/macid.list.chroot kali-live/kali-config/variant-xfce/package-lists/macid.list.chroot
+
+      - name: Build MACID_x86
+        run: |
+          cd kali-live
+          sudo ./build.sh --verbose --arch amd64 --variant xfce
+
+      - name: Upload ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: MACID_x86-ISO
+          path: kali-live/images/*.iso
+          if-no-files-found: error
