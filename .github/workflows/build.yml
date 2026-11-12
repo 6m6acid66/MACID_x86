@@ -40,10 +40,19 @@ jobs:
         run: |
           git clone --depth 1 https://gitlab.com/kalilinux/build-scripts/kali-live.git
 
-      - name: Configure MACID packages
+      - name: Configure MACID packages and branding
         run: |
           mkdir -p kali-live/kali-config/variant-xfce/package-lists
+          mkdir -p kali-live/kali-config/variant-xfce/includes.binary/boot/grub/assets
+
           cp packages/macid.list.chroot kali-live/kali-config/variant-xfce/package-lists/macid.list.chroot
+
+          cp boot/grub/grub.cfg kali-live/kali-config/variant-xfce/includes.binary/boot/grub/grub.cfg
+
+          cp boot/grub/assets/4623A530-DBFC-4647-8D46-11BA56ADF2FD.png kali-live/kali-config/variant-xfce/includes.binary/boot/grub/assets/
+        run: |
+          
+        
 
       - name: Build MACID_x86
         run: |
