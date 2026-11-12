@@ -50,7 +50,7 @@ jobs:
           cp boot/grub/grub.cfg kali-live/kali-config/variant-xfce/includes.binary/boot/grub/grub.cfg
 
           cp boot/grub/assets/4623A530-DBFC-4647-8D46-11BA56ADF2FD.png kali-live/kali-config/variant-xfce/includes.binary/boot/grub/assets/
-        run: |
+        
           
         
 
