@@ -43,13 +43,18 @@ jobs:
       - name: Configure MACID packages and branding
         run: |
           mkdir -p kali-live/kali-config/variant-xfce/package-lists
-          mkdir -p kali-live/kali-config/variant-xfce/includes.binary/boot/grub/assets
+          mkdir -p kali-live/kali-config/common/bootloaders/grub-pc
+          mkdir -p kali-live/kali-config/common/includes.binary/isolinux
 
           cp packages/macid.list.chroot kali-live/kali-config/variant-xfce/package-lists/macid.list.chroot
 
-          cp boot/grub/grub.cfg kali-live/kali-config/variant-xfce/includes.binary/boot/grub/grub.cfg
+          cp boot/grub/assets/4623A530-DBFC-4647-8D46-11BA56ADF2FD.png kali-live/kali-config/common/bootloaders/grub-pc/splash.png
 
-          cp boot/grub/assets/4623A530-DBFC-4647-8D46-11BA56ADF2FD.png kali-live/kali-config/variant-xfce/includes.binary/boot/grub/assets/
+          cp boot/grub/assets/4623A530-DBFC-4647-8D46-11BA56ADF2FD.png kali-live/kali-config/common/includes.binary/isolinux/splash.png
+        
+          
+
+      
         
           
         
